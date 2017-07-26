@@ -9,6 +9,10 @@ foodieApp.config(function ($routeProvider) {
 		templateUrl: 'pages/main.html',
 		controller: 'mainController'
 	})
+  .when('/restaurant/:id', {
+		templateUrl: 'pages/restaurant.html',
+		controller: 'restaurantController'
+	})
 })
 
 foodieApp.controller('mainController',function($scope) {
@@ -45,4 +49,9 @@ foodieApp.controller('loginController',function($scope,$location) {
 		// console.log('Do Something')
 		$location.url('home')
 	}
+})
+foodieApp.controller('restaurantController',function($scope,$routeParams) {
+	$scope.restaurantId = $routeParams.id;
+  var restaurants = 'Paste your restaurant Object here'
+	$scope.restaurant = restaurants[$routeParams.id - 1];
 })
